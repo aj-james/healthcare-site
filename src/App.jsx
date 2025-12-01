@@ -1,3 +1,4 @@
+
 // App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -400,6 +401,28 @@ function Opposition() {
             </div>
           </div>
         </section>
+// Add this section to the Opposition page after the current content:
+
+<section className="bg-gray-50 p-6 rounded-lg mt-6">
+  <h4 className="font-bold mb-3">Specific Examples of Resistance</h4>
+  <div className="space-y-4">
+    <div className="p-4 bg-white rounded border">
+      <h5 className="font-bold text-red-700">Union Opposition in New York</h5>
+      <p className="text-sm mt-1">
+        "Several New York City municipal unions opposed the proposed New York Health Act 
+        on grounds that it could undermine existing health plans negotiated through collective 
+        bargaining" (Health Policy Review).
+      </p>
+    </div>
+    <div className="p-4 bg-white rounded border">
+      <h5 className="font-bold text-red-700">Charity Care Failures</h5>
+      <p className="text-sm mt-1">
+        "Nonprofit hospitals have introduced charity care programs, yet investigative reports 
+        reveal that many still sue patients for unpaid bills" (Johns Hopkins University).
+      </p>
+    </div>
+  </div>
+</section>
 
         <section className="bg-white p-8 rounded-lg shadow">
           <h3 className="text-xl font-bold mb-6">Incrementalism vs. Structural Change</h3>
