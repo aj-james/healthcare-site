@@ -334,7 +334,7 @@ function About() {
         />
 
         <h3 className="font-semibold mt-6">Contact / Project Team</h3>
-        <p>AJ James - Project Lead (fictional for this demo). Team: research, design, policy outreach.</p>
+        <p>AJ James - Project Lead. Team: research, design, policy outreach.</p>
       </div>
     </main>
   );
@@ -351,10 +351,10 @@ function Resources() {
           <li>Commonwealth Fund. “Mirror, Mirror” series. 2022.</li>
           <li>Kaiser Family Foundation. “Health Insurance Coverage” 2023.</li>
           <li>Himmelstein, D., et al. “Medical Bankruptcy in the United States, 2007.” Am J Public Health, 2009.</li>
-          <li>Annotated Bibliography (uploaded) - project research notes.</li>
+          <li>Annotated Bibliography - project research notes.</li>
         </ol>
 
-        <p className="text-sm text-gray-600 mt-4">Add your full MLA entries here from your Annotated Bibliography document.</p>
+        <p className="text-sm text-gray-600 mt-4"></p>
       </div>
     </main>
   );
