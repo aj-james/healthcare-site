@@ -163,14 +163,17 @@ function Introduction() {
         <section className="bg-white p-8 rounded-lg shadow">
           <h3 className="text-xl font-bold mb-6">Embedded Analysis: How We Got Here</h3>
           <div className="aspect-video rounded-lg overflow-hidden">
-            <iframe
-              src="https://www.youtube.com/embed/pZHiIGFLN8Y"
-              title="The History of American Healthcare"
-              className="w-full h-full"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+           <iframe width="560" height="315" 
+             src="https://www.youtube.com/embed/gXBPKE28UF0?si=cQgSYgGzm9WAW-Uq" 
+             title="Why American Healthcare Cost So Much" 
+             frameborder="0" 
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+             allowfullscreen></iframe>
+          <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/dK4EV9wJPm0?si=CtTwX9265p_FC9fE" 
+            title="YouTube video player" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen></iframe>
           </div>
           <p className="text-sm text-gray-600 mt-4">
             This documentary examines the historical and political factors that shaped America's unique healthcare system.
@@ -655,7 +658,7 @@ function Solutions() {
         </section>
 
         <section className="bg-white p-8 rounded-lg shadow">
-          <h3 className="text-xl font-bold mb-6">Embedded Solutions Analysis</h3>
+          <h3 className="text-xl font-bold mb-6">Solutions Analysis</h3>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="aspect-video rounded-lg overflow-hidden">
               <iframe
@@ -669,13 +672,14 @@ function Solutions() {
             </div>
             <div className="aspect-video rounded-lg overflow-hidden">
               <iframe
-                src="https://www.youtube.com/embed/0vCOic4J4_U"
-                title="International Healthcare Models"
-                className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              src="https://www.youtube.com/embed/pZHiIGFLN8Y"
+              title="The History of American Healthcare"
+              className="w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+            
             </div>
           </div>
         </section>
