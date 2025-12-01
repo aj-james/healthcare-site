@@ -2,7 +2,7 @@
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import "../index.css"; // Tailwind import
+import "./index.css"; // Tailwind import
 
 // --- Layout Components ---
 const Nav = () => (
