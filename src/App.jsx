@@ -509,13 +509,13 @@ const Solutions = () => (
 const Resources = () => (
   <div style={styles.page}>
     <div style={styles.hero}>
-      <h2 style={styles.title}>MLA Resources & Works Cited</h2>
+      <h2 style={styles.title}>Resources & Works Cited</h2>
       <p style={styles.subtitle}>Complete annotated bibliography and data sources</p>
     </div>
 
     <div style={styles.content}>
       <div style={styles.card}>
-        <h3>Works Cited (MLA Format)</h3>
+        <h3>Works Cited</h3>
         <div style={styles.citationList}>
           {[
             "American Public Health Association. Policy Statement: Single-Payer and Public Health Reform. APHA, 2022.",
