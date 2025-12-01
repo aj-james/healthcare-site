@@ -94,7 +94,7 @@ const Introduction = () => (
       <div style={styles.card}>
         <h3>Video Analysis: The American Healthcare Paradox</h3>
         <VideoEmbed 
-          url="https://www.youtube.com/embed/pZHiIGFLN8Y"
+          url="https://www.youtube.com/embed/gXBPKE28UF0?si=cQgSYgGzm9WAW-Uq"
           title="The American Healthcare Paradox Explained"
         />
       </div>
@@ -249,7 +249,7 @@ const Crisis = () => (
       <div style={styles.card}>
         <h3>Video Analysis: Why American Healthcare Costs So Much</h3>
         <VideoEmbed 
-          url="https://www.youtube.com/embed/u9x4cRWqPPM"
+          url="https://www.youtube.com/embed/BytzrjEfyfA"
           title="The High Cost of American Healthcare"
         />
       </div>
@@ -480,11 +480,11 @@ const Solutions = () => (
         <h3>Video Analysis: Solutions in Action</h3>
         <div style={styles.videoGrid}>
           <VideoEmbed 
-            url="https://www.youtube.com/embed/BytzrjEfyfA"
+            url="https://www.youtube.com/embed/u9x4cRWqPPM"
             title="How Single Payer Systems Work"
           />
           <VideoEmbed 
-            url="https://www.youtube.com/embed/0vCOic4J4_U"
+            url="https://www.youtube.com/embed/pZHiIGFLN8Y"
             title="International Healthcare Models"
           />
         </div>
