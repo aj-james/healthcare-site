@@ -337,14 +337,15 @@ function Extent() {
         <section className="bg-white p-8 rounded-lg shadow">
           <h3 className="text-xl font-bold mb-6">Embedded Analysis: The Cost of Complexity</h3>
           <div className="aspect-video rounded-lg overflow-hidden">
+            
             <iframe
-              src="https://www.youtube.com/embed/u9x4cRWqPPM"
-              title="Why American Healthcare Costs So Much"
-              className="w-full h-full"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+                src="https://www.youtube.com/embed/BytzrjEfyfA"
+                title="How Single Payer Systems Work"
+                className="w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
           </div>
         </section>
       </div>
@@ -662,13 +663,13 @@ function Solutions() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="aspect-video rounded-lg overflow-hidden">
               <iframe
-                src="https://www.youtube.com/embed/BytzrjEfyfA"
-                title="How Single Payer Systems Work"
-                className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              src="https://www.youtube.com/embed/u9x4cRWqPPM"
+              title="Why American Healthcare Costs So Much"
+              className="w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
             </div>
             <div className="aspect-video rounded-lg overflow-hidden">
               <iframe
