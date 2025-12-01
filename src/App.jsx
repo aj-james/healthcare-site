@@ -5,375 +5,180 @@ import "./index.css";
 
 // ---- Enhanced Utility Components ----
 const Nav = () => (
-  <header className="w-full shadow-lg bg-white sticky top-0 z-50 border-b">
-    <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-        Healthcare Justice Project
-      </div>
+  <header className="w-full shadow bg-white sticky top-0 z-50">
+    <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="text-2xl font-bold text-blue-800">Healthcare Justice Project</div>
       <nav className="space-x-6 hidden md:flex">
-        {["Introduction", "History", "Current Crisis", "Opposition", "Repercussions", "Solutions", "MLA Resources"].map((item) => (
-          <Link 
-            key={item}
-            to={item === "Introduction" ? "/" : `/${item.toLowerCase().replace(/ /g, '-')}`}
-            className="text-sm font-medium text-gray-700 hover:text-blue-600 hover:underline transition-colors duration-200"
-          >
-            {item}
-          </Link>
-        ))}
+        <Link to="/" className="text-sm font-medium text-gray-700 hover:text-blue-600">Introduction</Link>
+        <Link to="/history" className="text-sm font-medium text-gray-700 hover:text-blue-600">History</Link>
+        <Link to="/crisis" className="text-sm font-medium text-gray-700 hover:text-blue-600">Current Crisis</Link>
+        <Link to="/opposition" className="text-sm font-medium text-gray-700 hover:text-blue-600">Opposition</Link>
+        <Link to="/repercussions" className="text-sm font-medium text-gray-700 hover:text-blue-600">Repercussions</Link>
+        <Link to="/solutions" className="text-sm font-medium text-gray-700 hover:text-blue-600">Solutions</Link>
+        <Link to="/resources" className="text-sm font-medium text-gray-700 hover:text-blue-600">MLA Resources</Link>
       </nav>
-      <div className="md:hidden">
-        <button className="text-gray-700">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
+      <button className="md:hidden text-gray-700">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
   </header>
 );
 
 const Hero = ({ title, subtitle }) => (
-  <section className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-12 border-b">
-    <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]" />
-    <div className="max-w-7xl mx-auto px-6 relative">
-      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 tracking-tight">{title}</h1>
-      <p className="text-xl text-gray-700 max-w-3xl">{subtitle}</p>
+  <section className="bg-gradient-to-r from-blue-50 to-white py-12 border-b">
+    <div className="max-w-7xl mx-auto px-4">
+      <h1 className="text-4xl font-bold mb-4 text-gray-900">{title}</h1>
+      <p className="text-xl text-gray-700">{subtitle}</p>
     </div>
   </section>
 );
 
-// Enhanced Data Card with modern design
-const DataCard = ({ title, value, subtitle, source, color = "blue", icon }) => {
-  const colorConfig = {
-    blue: {
-      bg: "bg-gradient-to-br from-blue-50 to-blue-100",
-      border: "border-blue-200",
-      text: "text-blue-700",
-      value: "text-blue-800",
-      iconBg: "bg-blue-100"
-    },
-    red: {
-      bg: "bg-gradient-to-br from-red-50 to-red-100",
-      border: "border-red-200",
-      text: "text-red-700",
-      value: "text-red-800",
-      iconBg: "bg-red-100"
-    },
-    green: {
-      bg: "bg-gradient-to-br from-green-50 to-green-100",
-      border: "border-green-200",
-      text: "text-green-700",
-      value: "text-green-800",
-      iconBg: "bg-green-100"
-    },
-    purple: {
-      bg: "bg-gradient-to-br from-purple-50 to-purple-100",
-      border: "border-purple-200",
-      text: "text-purple-700",
-      value: "text-purple-800",
-      iconBg: "bg-purple-100"
-    },
-    orange: {
-      bg: "bg-gradient-to-br from-orange-50 to-orange-100",
-      border: "border-orange-200",
-      text: "text-orange-700",
-      value: "text-orange-800",
-      iconBg: "bg-orange-100"
-    },
-    indigo: {
-      bg: "bg-gradient-to-br from-indigo-50 to-indigo-100",
-      border: "border-indigo-200",
-      text: "text-indigo-700",
-      value: "text-indigo-800",
-      iconBg: "bg-indigo-100"
-    }
+// Enhanced Data Card
+const DataCard = ({ title, value, subtitle, source, color = "blue" }) => {
+  const colors = {
+    blue: "from-blue-50 to-blue-100 border-blue-200 text-blue-800",
+    red: "from-red-50 to-red-100 border-red-200 text-red-800",
+    green: "from-green-50 to-green-100 border-green-200 text-green-800",
+    purple: "from-purple-50 to-purple-100 border-purple-200 text-purple-800",
+    orange: "from-orange-50 to-orange-100 border-orange-200 text-orange-800"
   };
   
-  const config = colorConfig[color];
+  return (
+    <div className={`bg-gradient-to-br ${colors[color]} border rounded-xl p-5 shadow-sm`}>
+      <h3 className="font-semibold mb-2">{title}</h3>
+      <p className="text-3xl font-bold mb-1">{value}</p>
+      {subtitle && <p className="text-sm text-gray-600 mb-2">{subtitle}</p>}
+      {source && <p className="text-xs text-gray-500">Source: {source}</p>}
+    </div>
+  );
+};
+
+// Enhanced Bar Chart
+const BarChart = ({ data, title, height = 200 }) => {
+  const max = Math.max(...data.map(d => d.value));
+  const barWidth = 80;
+  const spacing = 30;
+  const totalWidth = data.length * (barWidth + spacing);
   
   return (
-    <div className={`${config.bg} border ${config.border} rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1`}>
-      <div className="flex items-start justify-between">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            {icon && <div className={`${config.iconBg} p-2 rounded-lg`}>{icon}</div>}
-            <h3 className={`font-semibold ${config.text}`}>{title}</h3>
-          </div>
-          <p className={`text-3xl font-bold ${config.value} mb-1`}>{value}</p>
-          {subtitle && <p className="text-sm text-gray-600 mb-2">{subtitle}</p>}
-          {source && <p className="text-xs text-gray-500">Source: {source}</p>}
+    <div className="bg-white rounded-xl p-6 shadow border">
+      {title && <h4 className="font-bold text-lg mb-6">{title}</h4>}
+      <div className="relative" style={{ height: `${height}px` }}>
+        {/* Grid lines */}
+        {[0, 25, 50, 75, 100].map((percent) => (
+          <div
+            key={percent}
+            className="absolute left-0 right-0 border-t border-gray-200"
+            style={{ bottom: `${percent}%` }}
+          />
+        ))}
+        
+        {/* Bars */}
+        <div className="flex items-end h-full pl-12 pr-4">
+          {data.map((item, index) => {
+            const barHeight = (item.value / max) * 100;
+            const colors = ["#3b82f6", "#8b5cf6", "#10b981", "#ef4444", "#f59e0b"];
+            
+            return (
+              <div key={index} className="flex flex-col items-center mx-2">
+                <div
+                  className="w-20 rounded-t-lg transition-all duration-500 hover:opacity-90"
+                  style={{
+                    height: `${barHeight}%`,
+                    background: `linear-gradient(to top, ${colors[index % colors.length]}, ${colors[index % colors.length]}cc)`,
+                    marginBottom: "4px"
+                  }}
+                />
+                <div className="text-center">
+                  <div className="font-bold text-gray-900">{item.value.toLocaleString()}</div>
+                  <div className="text-sm text-gray-600 mt-1">{item.label}</div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 };
 
-// Enhanced BulletList with better styling
-const BulletList = ({ items = [], icon = "•", color = "blue" }) => {
-  const colorClasses = {
-    blue: "text-blue-600",
-    red: "text-red-600",
-    green: "text-green-600",
-    purple: "text-purple-600"
-  };
-  
-  return (
-    <ul className="space-y-3">
-      {items.map((it, i) => (
-        <li key={i} className="flex items-start group">
-          <span className={`font-bold ${colorClasses[color]} mr-3 mt-1 group-hover:scale-110 transition-transform`}>{icon}</span>
-          <span className="text-gray-700 group-hover:text-gray-900 transition-colors">{it}</span>
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-// Enhanced MiniBarChart with modern styling
-const MiniBarChart = ({ data = [], title, height = 240, colors = ["#3b82f6", "#8b5cf6", "#10b981", "#ef4444"] }) => {
-  const max = Math.max(...data.map(d => d.value), 1);
-  const width = 600;
-  const barW = Math.floor(width / data.length) - 10;
-
-  return (
-    <div className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl shadow-lg border border-gray-200">
-      {title && <h4 className="font-bold text-lg mb-6 text-gray-800">{title}</h4>}
-      <svg viewBox={`0 0 ${width} ${height}`} className="w-full" style={{ height: `${height}px` }}>
-        {/* Grid lines */}
-        {[0.25, 0.5, 0.75, 1].map((ratio, i) => (
-          <line
-            key={i}
-            x1="30"
-            y1={height - 20 - ratio * (height - 40)}
-            x2={width}
-            y2={height - 20 - ratio * (height - 40)}
-            stroke="#e5e7eb"
-            strokeWidth="1"
-            strokeDasharray="4"
-          />
-        ))}
-        
-        {/* Bars with gradient and animation */}
-        {data.map((d, i) => {
-          const barH = (d.value / max) * (height - 40);
-          const x = i * (barW + 10) + 30;
-          const y = height - barH - 20;
-          
-          return (
-            <g key={i} className="group cursor-pointer">
-              <defs>
-                <linearGradient id={`gradient-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor={colors[i % colors.length]} stopOpacity="0.9" />
-                  <stop offset="100%" stopColor={colors[i % colors.length]} stopOpacity="0.7" />
-                </linearGradient>
-              </defs>
-              
-              {/* Animated bar with hover effect */}
-              <rect 
-                x={x} 
-                y={height - 20} 
-                width={barW} 
-                height="0" 
-                fill={`url(#gradient-${i})`}
-                rx="6"
-                className="transition-all duration-1000 ease-out group-hover:opacity-90"
-                style={{ animation: `growBar 1s ${i * 0.1}s ease-out forwards` }}
-              />
-              
-              {/* Value label */}
-              <text 
-                x={x + barW / 2} 
-                y={y - 10} 
-                fontSize="12" 
-                textAnchor="middle" 
-                fontWeight="600"
-                fill="#374151"
-                className="opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                {d.value.toLocaleString()}
-              </text>
-              
-              {/* X-axis label */}
-              <text 
-                x={x + barW / 2} 
-                y={height - 5} 
-                fontSize="11" 
-                textAnchor="middle" 
-                fill="#6b7280"
-                fontWeight="500"
-              >
-                {d.label}
-              </text>
-              
-              {/* Hover tooltip */}
-              <rect
-                x={x - 5}
-                y={y - 30}
-                width={barW + 10}
-                height="24"
-                fill="#1f2937"
-                rx="4"
-                className="opacity-0 group-hover:opacity-90 transition-opacity"
-              />
-              <text
-                x={x + barW / 2}
-                y={y - 15}
-                fontSize="10"
-                textAnchor="middle"
-                fill="white"
-                fontWeight="500"
-                className="opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                {d.value.toLocaleString()}
-              </text>
-            </g>
-          );
-        })}
-        
-        {/* Y-axis labels */}
-        {[0.25, 0.5, 0.75, 1].map((ratio, i) => (
-          <text
-            key={`y-${i}`}
-            x="20"
-            y={height - 20 - ratio * (height - 40) + 4}
-            fontSize="10"
-            textAnchor="end"
-            fill="#9ca3af"
-          >
-            {Math.round(max * ratio).toLocaleString()}
-          </text>
-        ))}
-      </svg>
-      
-      {/* Animation keyframes as style */}
-      <style jsx>{`
-        @keyframes growBar {
-          from { height: 0; y: ${height - 20}; }
-          to { height: ${height - 40}px; y: ${height - 40}; }
-        }
-      `}</style>
-    </div>
-  );
-};
-
-// Enhanced Comparison Table
+// Comparison Table
 const ComparisonTable = ({ title, data }) => (
-  <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+  <div className="bg-white rounded-xl shadow border overflow-hidden">
     {title && (
-      <div className="px-6 py-4 bg-gradient-to-r from-blue-50 to-purple-50 border-b">
+      <div className="px-6 py-4 bg-gray-50 border-b">
         <h4 className="font-bold text-gray-800">{title}</h4>
       </div>
     )}
-    <div className="overflow-x-auto">
-      <table className="min-w-full">
-        <thead>
-          <tr className="bg-gradient-to-r from-gray-50 to-gray-100">
-            <th className="py-4 px-6 text-left text-sm font-semibold text-gray-700 border-r border-gray-200">
-              Metric
-            </th>
-            <th className="py-4 px-6 text-left text-sm font-semibold text-red-600">
-              United States
-            </th>
-            <th className="py-4 px-6 text-left text-sm font-semibold text-green-600">
-              OECD Average
-            </th>
+    <table className="w-full">
+      <thead className="bg-gray-100">
+        <tr>
+          <th className="py-3 px-4 text-left font-semibold text-gray-700">Metric</th>
+          <th className="py-3 px-4 text-left font-semibold text-red-600">United States</th>
+          <th className="py-3 px-4 text-left font-semibold text-green-600">OECD Average</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row, i) => (
+          <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <td className="py-3 px-4 font-medium">{row.metric}</td>
+            <td className="py-3 px-4 text-red-700">{row.us}</td>
+            <td className="py-3 px-4 text-green-700">{row.oecd}</td>
           </tr>
-        </thead>
-        <tbody>
-          {data.map((row, i) => (
-            <tr 
-              key={i} 
-              className={`${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-blue-50 transition-colors`}
-            >
-              <td className="py-4 px-6 font-medium text-gray-900 border-r border-gray-200">
-                {row.metric}
-              </td>
-              <td className="py-4 px-6 text-red-700 font-medium">
-                {row.us}
-              </td>
-              <td className="py-4 px-6 text-green-700 font-medium">
-                {row.oecd}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   </div>
 );
 
-// Enhanced Quote Component
+// Quote Component
 const Quote = ({ text, author, source }) => (
-  <div className="relative my-8 p-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl border-l-4 border-blue-500 shadow-sm">
-    <div className="absolute top-4 left-4 text-4xl text-blue-300 opacity-50">"</div>
-    <p className="text-lg text-gray-800 italic relative z-10">"{text}"</p>
-    <div className="mt-4 pt-4 border-t border-blue-100">
-      <div className="flex items-center justify-between">
-        {author && <span className="font-semibold text-blue-700">{author}</span>}
-        {source && <span className="text-sm text-gray-600">— {source}</span>}
-      </div>
+  <div className="my-8 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+    <p className="text-gray-800 italic text-lg">"{text}"</p>
+    <div className="mt-4 text-sm text-gray-600">
+      {author && <span className="font-semibold">{author}</span>}
+      {source && <span> — {source}</span>}
     </div>
   </div>
 );
 
-// New: Statistic Highlight Component
-const StatHighlight = ({ value, label, trend, color = "blue" }) => {
-  const colors = {
-    blue: "from-blue-500 to-cyan-500",
-    red: "from-red-500 to-pink-500",
-    green: "from-green-500 to-emerald-500",
-    purple: "from-purple-500 to-violet-500"
-  };
-  
-  return (
-    <div className="text-center p-4">
-      <div className={`text-4xl font-bold bg-gradient-to-r ${colors[color]} bg-clip-text text-transparent mb-2`}>
-        {value}
-      </div>
-      <p className="text-gray-700 font-medium">{label}</p>
-      {trend && <p className="text-sm text-gray-500 mt-1">{trend}</p>}
-    </div>
-  );
-};
-
-// New: Donut Chart Component for percentages
-const DonutChart = ({ value, max = 100, label, color = "#3b82f6", size = 120 }) => {
-  const radius = size / 2 - 10;
+// Donut Chart for percentages
+const DonutChart = ({ value, label, size = 120 }) => {
+  const radius = 50;
   const circumference = 2 * Math.PI * radius;
-  const progress = (value / max) * circumference;
+  const progress = (value / 100) * circumference;
   
   return (
     <div className="flex flex-col items-center">
       <div className="relative" style={{ width: size, height: size }}>
-        <svg className="w-full h-full" viewBox={`0 0 ${size} ${size}`}>
-          {/* Background circle */}
+        <svg className="w-full h-full" viewBox="0 0 120 120">
           <circle
-            cx={size / 2}
-            cy={size / 2}
+            cx="60"
+            cy="60"
             r={radius}
             fill="none"
             stroke="#e5e7eb"
-            strokeWidth="8"
+            strokeWidth="10"
           />
-          {/* Progress circle */}
           <circle
-            cx={size / 2}
-            cy={size / 2}
+            cx="60"
+            cy="60"
             r={radius}
             fill="none"
-            stroke={color}
-            strokeWidth="8"
+            stroke="#3b82f6"
+            strokeWidth="10"
             strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={circumference - progress}
-            transform={`rotate(-90 ${size / 2} ${size / 2})`}
-            className="transition-all duration-1000 ease-out"
+            transform="rotate(-90 60 60)"
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <div className="text-2xl font-bold text-gray-900">{value}%</div>
-            <div className="text-xs text-gray-600">{label}</div>
+            <div className="text-sm text-gray-600">{label}</div>
           </div>
         </div>
       </div>
@@ -381,33 +186,7 @@ const DonutChart = ({ value, max = 100, label, color = "#3b82f6", size = 120 }) 
   );
 };
 
-// New: Timeline Component
-const Timeline = ({ items }) => (
-  <div className="relative">
-    {/* Vertical line */}
-    <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-purple-400" />
-    
-    {items.map((item, i) => (
-      <div key={i} className="relative flex items-start mb-8">
-        {/* Circle marker */}
-        <div className={`absolute left-4 w-3 h-3 rounded-full border-4 border-white ${i === 0 ? 'bg-blue-500' : i === items.length - 1 ? 'bg-purple-500' : 'bg-blue-300'}`} />
-        
-        <div className="ml-12">
-          <div className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${i === 0 ? 'bg-blue-100 text-blue-800' : i === items.length - 1 ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800'}`}>
-            {item.year}
-          </div>
-          <h4 className="font-bold text-gray-900 mt-2">{item.title}</h4>
-          <p className="text-gray-600 mt-1">{item.description}</p>
-        </div>
-      </div>
-    ))}
-  </div>
-);
-
-// ---- Page Content (Keeping all your existing content exactly as is, just with enhanced components) ----
-// [ALL YOUR EXISTING PAGE CONTENT GOES HERE - Introduction, History, Extent, Opposition, Repercussions, Solutions, Resources]
-// I'll keep the structure but use enhanced components
-
+// ---- Page Content ----
 function Introduction() {
   const spendingData = [
     { label: "United States", value: 12914 },
@@ -423,30 +202,24 @@ function Introduction() {
         title="The Death of Care" 
         subtitle="How profit motives created America's broken healthcare system" 
       />
-      <div className="max-w-7xl mx-auto px-6 py-12 space-y-12">
-        {/* Enhanced Introduction Section */}
+      <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
         <section className="space-y-8">
-          <div className="prose prose-lg max-w-none">
-            <p className="text-xl text-gray-700 leading-relaxed">
-              <span className="font-bold text-gray-900">The United States spends more on healthcare than any other nation, yet its outcomes consistently rank among the lowest in the developed world.</span> In 2023, health expenditure reached approximately $12,914 per person, almost twice the average of the 38 high-income countries (OECD Health at a Glance 2023). Despite this, millions of Americans remain uninsured or underinsured, and medical debt drives many into bankruptcy.
-            </p>
-          </div>
+          <p className="text-xl text-gray-700 leading-relaxed">
+            <span className="font-bold text-gray-900">The United States spends more on healthcare than any other nation, yet its outcomes consistently rank among the lowest in the developed world.</span> In 2023, health expenditure reached approximately $12,914 per person, almost twice the average of the 38 high-income countries (OECD Health at a Glance 2023). Despite this, millions of Americans remain uninsured or underinsured, and medical debt drives many into bankruptcy.
+          </p>
           
-          {/* Enhanced Data Cards Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <DataCard 
               title="Per Capita Spending" 
               value="$12,914" 
               source="OECD 2023" 
               color="blue"
-              icon="💰"
             />
             <DataCard 
               title="Uninsured Americans" 
               value="28M+" 
               source="Health System Tracker" 
               color="red"
-              icon="🏥"
             />
             <DataCard 
               title="Medical Debt" 
@@ -454,7 +227,6 @@ function Introduction() {
               subtitle="Americans with medical debt"
               source="KFF 2023" 
               color="orange"
-              icon="💸"
             />
             <DataCard 
               title="GDP on Healthcare" 
@@ -462,7 +234,6 @@ function Introduction() {
               subtitle="vs. OECD avg 9-11%"
               source="CMS 2024" 
               color="purple"
-              icon="📊"
             />
           </div>
 
@@ -473,45 +244,33 @@ function Introduction() {
           />
         </section>
 
-        {/* Enhanced Charts Section */}
         <section className="space-y-8">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">International Comparison</h3>
-              <p className="text-gray-600">Spending vs. outcomes across developed nations</p>
-            </div>
-            <div className="flex gap-2">
-              <span className="inline-flex items-center gap-2 text-sm">
-                <div className="w-3 h-3 bg-blue-500 rounded"></div>
-                United States
-              </span>
-              <span className="inline-flex items-center gap-2 text-sm">
-                <div className="w-3 h-3 bg-purple-500 rounded"></div>
-                OECD Average
-              </span>
-            </div>
-          </div>
-
+          <h3 className="text-2xl font-bold text-gray-900">International Comparison</h3>
+          
           <div className="grid lg:grid-cols-2 gap-8">
-            <MiniBarChart 
+            <BarChart 
               title="Health Expenditure Per Capita (2023)"
               data={spendingData}
               height={280}
-              colors={["#3b82f6", "#8b5cf6", "#10b981", "#f59e0b", "#ef4444"]}
             />
             
             <div className="space-y-6">
-              <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border">
-                <h4 className="font-bold text-lg mb-4 text-gray-800">Key Findings</h4>
-                <BulletList 
-                  items={[
-                    "Highest spending, middling outcomes (Commonwealth Fund 2023)",
-                    "Administrative costs 2-4x higher than peer nations",
-                    "Worst performance on equity and access measures"
-                  ]}
-                  color="blue"
-                  icon="▶"
-                />
+              <div className="bg-gray-50 p-6 rounded-xl border">
+                <h4 className="font-bold text-lg mb-4">Key Findings</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <div className="text-blue-600 mr-3">▶</div>
+                    <span>Highest spending, middling outcomes (Commonwealth Fund 2023)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="text-blue-600 mr-3">▶</div>
+                    <span>Administrative costs 2-4x higher than peer nations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="text-blue-600 mr-3">▶</div>
+                    <span>Worst performance on equity and access measures</span>
+                  </li>
+                </ul>
               </div>
               
               <ComparisonTable 
@@ -526,19 +285,10 @@ function Introduction() {
           </div>
         </section>
 
-        {/* Enhanced Video Section */}
         <section>
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-2xl border">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <span className="text-2xl">📹</span>
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900">Video Analysis</h3>
-                <p className="text-gray-600">The American Healthcare Paradox explained</p>
-              </div>
-            </div>
-            <div className="aspect-video rounded-xl overflow-hidden shadow-xl">
+          <div className="bg-blue-50 p-8 rounded-xl border">
+            <h3 className="text-2xl font-bold mb-6">Video Analysis</h3>
+            <div className="aspect-video rounded-lg overflow-hidden">
               <iframe
                 src="https://www.youtube.com/embed/pZHiIGFLN8Y"
                 title="The American Healthcare Paradox"
@@ -555,10 +305,82 @@ function Introduction() {
   );
 }
 
-// [The rest of your pages (History, Extent, Opposition, Repercussions, Solutions, Resources) follow the same pattern - using enhanced components but keeping content identical]
-// For brevity, I'll show the enhanced Extent page as an example:
+function History() {
+  const gdpData = [
+    { label: "1960", value: 5 },
+    { label: "1980", value: 9 },
+    { label: "2000", value: 13 },
+    { label: "2020", value: 18 },
+    { label: "2024", value: 19 },
+  ];
 
-function Extent() {
+  return (
+    <main className="min-h-screen">
+      <Hero 
+        title="Historical Roots" 
+        subtitle="From wartime policies to structural inequity" 
+      />
+      <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
+        <section className="space-y-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">The Employer-Based System</h3>
+              <p className="mb-4">
+                Employer-based healthcare developed during World War II, when wage controls led companies to offer insurance instead of salary increases. According to the Kaiser Family Foundation, "employers sought non-wage forms of compensation during wartime restrictions, leading to the widespread adoption of job-based health coverage."
+              </p>
+              <p>
+                What started as a temporary solution became the backbone of American healthcare. In contrast, other industrialized nations built universal systems that guaranteed coverage to all citizens as a matter of public rights.
+              </p>
+            </div>
+            <div className="bg-blue-50 p-6 rounded-lg">
+              <h4 className="font-bold mb-3">Two Divergent Philosophies</h4>
+              <div className="space-y-4">
+                <div className="p-4 bg-white rounded border">
+                  <div className="font-bold text-blue-700 mb-1">🇪🇺 European Model</div>
+                  <p className="text-sm">Healthcare as a public good and human right</p>
+                </div>
+                <div className="p-4 bg-white rounded border">
+                  <div className="font-bold text-red-700 mb-1">🇺🇸 American Model</div>
+                  <p className="text-sm">Healthcare as a private commodity</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <BarChart 
+            title="Healthcare Spending as % of GDP (1960-2024)"
+            data={gdpData}
+            height={240}
+          />
+        </section>
+
+        <section className="bg-red-50 p-8 rounded-xl border border-red-200">
+          <h3 className="text-2xl font-bold mb-4 text-red-800">Structural Racism in Healthcare</h3>
+          <p className="mb-6">
+            "The racial inequities that marked mid-century America were built directly into this system. Segregated hospitals, discriminatory employment policies, and unequal access to insurance left Black and Indigenous communities disproportionately excluded from medical care" (CDC National Vital Statistics).
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <DataCard 
+              title="Black Maternal Mortality" 
+              value="3x higher" 
+              subtitle="than white mothers"
+              source="CDC 2023" 
+              color="red"
+            />
+            <DataCard 
+              title="Insurance Disparities" 
+              value="2x more likely" 
+              subtitle="uninsured for Black Americans"
+              color="red"
+            />
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}
+
+function Crisis() {
   const adminData = [
     { label: "US", value: 8 },
     { label: "Canada", value: 2 },
@@ -581,88 +403,75 @@ function Extent() {
         title="Current Crisis" 
         subtitle="Measuring the gap between spending and outcomes" 
       />
-      <div className="max-w-7xl mx-auto px-6 py-12 space-y-12">
-        {/* Enhanced Header with Stats */}
-        <section className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">The American Healthcare Paradox</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            <StatHighlight value="$12.9K" label="Spending per capita" trend="Highest in OECD" color="blue" />
-            <StatHighlight value="76.4" label="Life expectancy" trend="Below OECD avg" color="red" />
-            <StatHighlight value="8%" label="Admin costs" trend="2-4x peer nations" color="purple" />
-            <StatHighlight value="20%" label="Claims denied" trend="Among insured" color="orange" />
-          </div>
-        </section>
-
+      <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
         <section className="space-y-8">
+          <h3 className="text-2xl font-bold">The Scale of the Problem</h3>
+          <p className="text-lg">
+            Nearly one in ten Americans lives without health insurance, and an estimated 100 million people carry medical debt (Health System Tracker 2023). In contrast, almost all OECD nations achieve population coverage rates near 100 percent.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <DataCard 
+              title="Uninsured Rate" 
+              value="8.4%" 
+              subtitle="vs. OECD <1%"
+              source="KFF 2023" 
+              color="blue"
+            />
+            <DataCard 
+              title="Drug Price Difference" 
+              value="100% higher" 
+              subtitle="US vs OECD average"
+              source="OECD 2023" 
+              color="red"
+            />
+            <DataCard 
+              title="Denial Rate" 
+              value="20%" 
+              subtitle="of insured claims denied"
+              source="Health System Tracker" 
+              color="orange"
+            />
+          </div>
+
+          <Quote 
+            text="In this structure, coverage complexity often functions as control rather than care. Denials are not rare administrative mistakes; they are systemic features of private insurance designed to contain costs."
+            source="Johns Hopkins Hospital Debt Report"
+          />
+        </section>
+
+        <section>
+          <h3 className="text-2xl font-bold mb-8">Comparative Analysis</h3>
           <div className="grid lg:grid-cols-2 gap-8">
-            {/* Left Column - Charts */}
-            <div className="space-y-8">
-              <MiniBarChart 
-                title="Administrative Waste (% of spending)"
-                data={adminData}
-                height={260}
-                colors={["#ef4444", "#10b981", "#3b82f6", "#8b5cf6", "#f59e0b"]}
-              />
-              <MiniBarChart 
-                title="Average Prescription Cost (USD)"
-                data={drugPriceData}
-                height={260}
-                colors={["#8b5cf6", "#10b981", "#3b82f6", "#ef4444", "#f59e0b"]}
-              />
-            </div>
-            
-            {/* Right Column - Analysis */}
-            <div className="space-y-8">
-              <div className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl shadow-lg border">
-                <h3 className="text-xl font-bold mb-4 text-gray-900">The Coverage Gap</h3>
-                <p className="text-gray-700 mb-6">
-                  Nearly one in ten Americans lives without health insurance, and an estimated 100 million people carry medical debt (Health System Tracker 2023). In contrast, almost all OECD nations achieve population coverage rates near 100 percent.
-                </p>
-                
-                <div className="grid grid-cols-2 gap-4">
-                  <DonutChart value={8.4} label="Uninsured Rate" color="#ef4444" />
-                  <DonutChart value={20} label="Claims Denied" color="#f59e0b" />
-                </div>
-              </div>
-              
-              <Quote 
-                text="In this structure, coverage complexity often functions as control rather than care. Denials are not rare administrative mistakes; they are systemic features of private insurance designed to contain costs."
-                source="Johns Hopkins Hospital Debt Report"
-              />
-              
-              <ComparisonTable 
-                title="Health Outcomes Comparison"
-                data={[
-                  { metric: "Infant Mortality Rate", us: "5.4/1000", oecd: "3.8/1000" },
-                  { metric: "Life Expectancy", us: "76.4 years", oecd: "80.3 years" },
-                  { metric: "Maternal Mortality", us: "32.9/100k", oecd: "8.4/100k" },
-                  { metric: "Avoidable Deaths", us: "112/100k", oecd: "72/100k" },
-                ]}
-              />
-            </div>
+            <BarChart 
+              title="Administrative Waste (% of spending)"
+              data={adminData}
+              height={240}
+            />
+            <BarChart 
+              title="Average Prescription Cost (USD)"
+              data={drugPriceData}
+              height={240}
+            />
           </div>
         </section>
 
-        {/* Enhanced Video Section */}
         <section>
-          <div className="bg-gradient-to-r from-red-50 to-orange-50 p-8 rounded-2xl border">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-red-100 rounded-lg">
-                  <span className="text-2xl">📈</span>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900">Cost Analysis</h3>
-                  <p className="text-gray-600">Why American Healthcare Costs So Much</p>
-                </div>
-              </div>
-              <div className="hidden md:block">
-                <span className="text-sm font-medium bg-white px-3 py-1 rounded-full border">
-                  15 min watch
-                </span>
-              </div>
-            </div>
-            <div className="aspect-video rounded-xl overflow-hidden shadow-xl">
+          <ComparisonTable 
+            title="Health Outcomes Comparison"
+            data={[
+              { metric: "Infant Mortality Rate", us: "5.4/1000", oecd: "3.8/1000" },
+              { metric: "Life Expectancy", us: "76.4 years", oecd: "80.3 years" },
+              { metric: "Maternal Mortality", us: "32.9/100k", oecd: "8.4/100k" },
+              { metric: "Avoidable Deaths", us: "112/100k", oecd: "72/100k" },
+            ]}
+          />
+        </section>
+
+        <section>
+          <div className="bg-red-50 p-8 rounded-xl border border-red-200">
+            <h3 className="text-2xl font-bold mb-6">Video: The Cost of Complexity</h3>
+            <div className="aspect-video rounded-lg overflow-hidden">
               <iframe
                 src="https://www.youtube.com/embed/u9x4cRWqPPM"
                 title="Why American Healthcare Costs So Much"
@@ -679,32 +488,423 @@ function Extent() {
   );
 }
 
-// [Continue with History, Opposition, Repercussions, Solutions, Resources pages using same enhanced components]
+function Opposition() {
+  return (
+    <main className="min-h-screen">
+      <Hero 
+        title="Opposition to Reform" 
+        subtitle="Corporate power and ideological resistance" 
+      />
+      <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
+        <section className="space-y-8">
+          <h3 className="text-2xl font-bold">The Forces Against Change</h3>
+          <p className="text-lg">
+            Powerful industries and political alliances have worked consistently to prevent the adoption of a single-payer or universal healthcare system. These groups coordinate through coalitions such as the Partnership for America's Health Care Future (PAHCF) to shape legislation and public opinion.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-red-50 p-6 rounded-xl">
+              <h4 className="font-bold text-xl mb-4 text-red-800">Lobbying Power</h4>
+              <div className="text-4xl font-bold text-red-700 mb-2">$143M</div>
+              <p className="text-gray-600">spent on lobbying in 2018 alone to block Medicare for All</p>
+              <p className="text-sm text-gray-500 mt-4">Source: Commonwealth Fund</p>
+            </div>
+            <div className="bg-blue-50 p-6 rounded-xl">
+              <h4 className="font-bold text-xl mb-4 text-blue-800">Coordination Network</h4>
+              <ul className="space-y-3">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                  <span>America's Health Insurance Plans (AHIP)</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                  <span>Pharmaceutical Research and Manufacturers (PhRMA)</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                  <span>Federation of American Hospitals</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                  <span>American Medical Association</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <Quote 
+            text="The belief that health care should remain a private commodity has become a defining feature of American exceptionalism in public policy."
+            source="OECD Health at a Glance"
+          />
+        </section>
+
+        <section className="bg-yellow-50 p-8 rounded-xl border border-yellow-200">
+          <h3 className="text-2xl font-bold mb-6">Specific Examples of Resistance</h3>
+          <div className="space-y-6">
+            <div className="p-6 bg-white rounded-lg border">
+              <h4 className="font-bold text-red-700 mb-3">Union Opposition in New York</h4>
+              <p className="text-gray-700">
+                "Several New York City municipal unions opposed the proposed New York Health Act 
+                on grounds that it could undermine existing health plans negotiated through collective 
+                bargaining" (Health Policy Review).
+              </p>
+            </div>
+            <div className="p-6 bg-white rounded-lg border">
+              <h4 className="font-bold text-orange-700 mb-3">Charity Care Failures</h4>
+              <p className="text-gray-700">
+                "Nonprofit hospitals have introduced charity care programs, yet investigative reports 
+                reveal that many still sue patients for unpaid bills" (Johns Hopkins University).
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}
+
+function Repercussions() {
+  return (
+    <main className="min-h-screen">
+      <Hero 
+        title="Human & Economic Costs" 
+        subtitle="The devastating consequences of a broken system" 
+      />
+      <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
+        <section className="space-y-8">
+          <h3 className="text-2xl font-bold">The Burden on Americans</h3>
+          <p className="text-lg">
+            Medical debt remains the leading cause of personal bankruptcy in the United States, cited in two-thirds of all filings. Chronic illness and delayed treatment perpetuate poverty and reduce national productivity.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <DataCard 
+              title="Medical Bankruptcy" 
+              value="66%" 
+              subtitle="of personal bankruptcies"
+              source="NBER 2023" 
+              color="red"
+            />
+            <DataCard 
+              title="Care Delayed Due to Cost" 
+              value="29%" 
+              subtitle="of Americans"
+              source="Commonwealth Fund" 
+              color="orange"
+            />
+            <DataCard 
+              title="Medications Skipped" 
+              value="18%" 
+              subtitle="due to high costs"
+              source="KFF 2023" 
+              color="purple"
+            />
+          </div>
+
+          <Quote 
+            text="The moral cost is equally profound: a society that normalizes preventable suffering erodes its own democratic legitimacy."
+          />
+        </section>
+
+        <section>
+          <h3 className="text-2xl font-bold mb-6">The Coverage Illusion</h3>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div>
+              <p className="mb-6">
+                Nearly one in five insured adults report being denied a medical service by their insurer in the past year. OECD nations provide automatic coverage for basic care; the U.S. system often denies or delays treatment through pre-authorization barriers and coverage disputes.
+              </p>
+              <div className="flex justify-center space-x-12">
+                <DonutChart value={20} label="Claims Denied" />
+                <DonutChart value={33} label="Cost-Related Avoidance" />
+              </div>
+            </div>
+            <ComparisonTable 
+              title="Access to Care Comparison"
+              data={[
+                { metric: "Same-Day Doctor Access", us: "51%", oecd: "76%" },
+                { metric: "Cost-Related Care Avoidance", us: "33%", oecd: "9%" },
+                { metric: "Out-of-Pocket Costs", us: "$1,225", oecd: "$640" },
+                { metric: "Insurance Denials", us: "20%", oecd: "<5%" },
+              ]}
+            />
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}
+
+function Solutions() {
+  const savingsData = [
+    { label: "Admin Waste", value: 500 },
+    { label: "Drug Prices", value: 150 },
+    { label: "Preventive Care", value: 200 },
+    { label: "Total", value: 850 },
+  ];
+
+  return (
+    <main className="min-h-screen">
+      <Hero 
+        title="The Path Forward" 
+        subtitle="Universal healthcare as the only moral and practical solution" 
+      />
+      <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
+        <section className="space-y-8">
+          <h3 className="text-2xl font-bold">Addressing Counterarguments</h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-red-50 p-6 rounded-xl">
+              <h4 className="font-bold text-xl mb-6 text-red-800">Common Objections</h4>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <div className="text-red-600 mr-3 text-xl">✗</div>
+                  <span>Would increase taxes and government spending</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-red-600 mr-3 text-xl">✗</div>
+                  <span>Would stifle medical innovation</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-red-600 mr-3 text-xl">✗</div>
+                  <span>Reduces patient choice and freedom</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-red-600 mr-3 text-xl">✗</div>
+                  <span>Too politically difficult to implement</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-green-50 p-6 rounded-xl">
+              <h4 className="font-bold text-xl mb-6 text-green-800">Evidence-Based Responses</h4>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <div className="text-green-600 mr-3 text-xl">✓</div>
+                  <span>Total citizen costs decrease as admin overhead drops</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-green-600 mr-3 text-xl">✓</div>
+                  <span>OECD data shows universal systems maintain robust innovation</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-green-600 mr-3 text-xl">✓</div>
+                  <span>Private insurance often restricts choice more than universal systems</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-green-600 mr-3 text-xl">✓</div>
+                  <span>Medicare expansion shows phased approaches can succeed</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3 className="text-2xl font-bold mb-8">The Economic Case for Universal Care</h3>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div>
+              <p className="mb-6">
+                "A single-payer or universal healthcare model offers the most coherent solution for combining efficiency, equity, and accountability. Under such a system, administrative waste would shrink dramatically: studies estimate that eliminating redundant billing and insurance overhead could redirect more than $500 billion annually toward direct patient care."
+              </p>
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <p className="font-bold">Preventive care would expand, reducing long-term costs and improving population health outcomes.</p>
+              </div>
+            </div>
+            <BarChart 
+              title="Projected Annual Savings (Billions USD)"
+              data={savingsData}
+              height={240}
+            />
+          </div>
+        </section>
+
+        <section>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-xl font-bold mb-6">International Success Stories</h4>
+              <p className="mb-4">
+                "Evidence from other OECD nations disproves the argument that universal systems stifle innovation. Germany, Japan, and Sweden all maintain robust biotech and pharmaceutical industries while guaranteeing universal access."
+              </p>
+              <ComparisonTable 
+                data={[
+                  { metric: "Innovation Ranking", us: "3rd", oecd: "Germany 1st, Japan 2nd" },
+                  { metric: "Coverage Rate", us: "90%", oecd: "99-100%" },
+                  { metric: "Patient Satisfaction", us: "Low", oecd: "High" },
+                  { metric: "Wait Times", us: "Variable", oecd: "Comparable or better" },
+                ]}
+              />
+            </div>
+            <div>
+              <h4 className="text-xl font-bold mb-6">Implementation Roadmap</h4>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="text-center p-6 bg-blue-100 rounded-xl">
+                  <div className="text-3xl font-bold text-blue-800 mb-2">1</div>
+                  <p className="font-bold">Political Will</p>
+                </div>
+                <div className="text-center p-6 bg-green-100 rounded-xl">
+                  <div className="text-3xl font-bold text-green-800 mb-2">2</div>
+                  <p className="font-bold">Public Education</p>
+                </div>
+                <div className="text-center p-6 bg-purple-100 rounded-xl">
+                  <div className="text-3xl font-bold text-purple-800 mb-2">3</div>
+                  <p className="font-bold">Phased Transition</p>
+                </div>
+                <div className="text-center p-6 bg-orange-100 rounded-xl">
+                  <div className="text-3xl font-bold text-orange-800 mb-2">4</div>
+                  <p className="font-bold">Equity Focus</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-xl border">
+            <h3 className="text-2xl font-bold mb-6">Video Analysis: Solutions in Action</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="aspect-video rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.youtube.com/embed/BytzrjEfyfA"
+                  title="How Single Payer Systems Work"
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <div className="aspect-video rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.youtube.com/embed/0vCOic4J4_U"
+                  title="International Healthcare Models"
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="text-center py-12 bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl">
+          <h3 className="text-3xl font-bold mb-6">The Final Argument</h3>
+          <p className="text-xl text-gray-800 mb-6 max-w-3xl mx-auto">
+            "The failures of American healthcare are not accidental; they are the predictable outcome of a system designed to privilege profit over patients."
+          </p>
+          <p className="text-2xl font-bold text-blue-800">
+            "The death of care is not inevitable, but reversing it requires moral courage equal to the scale of the problem."
+          </p>
+        </section>
+      </div>
+    </main>
+  );
+}
+
+function Resources() {
+  return (
+    <main className="min-h-screen">
+      <Hero 
+        title="MLA Resources & Works Cited" 
+        subtitle="Complete annotated bibliography and data sources" 
+      />
+      <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
+        <section>
+          <h3 className="text-2xl font-bold mb-8">Works Cited (MLA Format)</h3>
+          <div className="space-y-6">
+            {[
+              {
+                citation: "American Public Health Association. Policy Statement: Single-Payer and Public Health Reform.",
+                details: "APHA, 2022, https://www.apha.org/policies-and-advocacy/public-health-policy-statements.",
+                color: "blue"
+              },
+              {
+                citation: "Commonwealth Fund. Mirror, Mirror 2023: Reflecting Poorly on U.S. Health Care.",
+                details: "Aug. 2023, https://www.commonwealthfund.org/publications/fund-reports/2023/aug/mirror-mirror-2023.",
+                color: "green"
+              },
+              {
+                citation: "Organisation for Economic Co-operation and Development. Health at a Glance 2023: OECD Indicators.",
+                details: "OECD Publishing, 2023, https://www.oecd.org/health/health-at-a-glance/.",
+                color: "purple"
+              },
+              {
+                citation: "Health System Tracker. The Burden of Medical Debt in the United States.",
+                details: "Peterson-KFF, 2023, https://www.healthsystemtracker.org/brief/the-burden-of-medical-debt-in-the-united-states/.",
+                color: "red"
+              },
+              {
+                citation: "Kaiser Family Foundation Employer Health Benefits Survey: 2023 Summary of Findings.",
+                details: "KFF, 2023, https://www.kff.org/health-costs/report/2023-employer-health-benefits-survey/.",
+                color: "orange"
+              }
+            ].map((item, index) => (
+              <div key={index} className={`border-l-4 border-${item.color}-500 pl-6 py-4 bg-${item.color}-50`}>
+                <p className="font-bold text-gray-900">{item.citation}</p>
+                <p className="text-gray-600 mt-2">{item.details}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-gray-50 p-8 rounded-xl">
+          <h4 className="text-xl font-bold mb-6">Data Sources & Methodology</h4>
+          <p className="mb-4">This project synthesizes data from:</p>
+          <div className="grid md:grid-cols-2 gap-4">
+            <ul className="space-y-2">
+              <li className="flex items-center">
+                <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                <span>OECD Health at a Glance 2023 report</span>
+              </li>
+              <li className="flex items-center">
+                <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                <span>Commonwealth Fund international comparisons</span>
+              </li>
+              <li className="flex items-center">
+                <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                <span>CDC National Vital Statistics</span>
+              </li>
+            </ul>
+            <ul className="space-y-2">
+              <li className="flex items-center">
+                <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                <span>Kaiser Family Foundation surveys</span>
+              </li>
+              <li className="flex items-center">
+                <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                <span>Academic research from NBER and Johns Hopkins</span>
+              </li>
+              <li className="flex items-center">
+                <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                <span>World Index of Healthcare Innovation</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}
 
 // ---- App Root ----
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <div className="min-h-screen bg-gray-50">
         <Nav />
         <Routes>
           <Route path="/" element={<Introduction />} />
           <Route path="/history" element={<History />} />
-          <Route path="/current-crisis" element={<Extent />} />
+          <Route path="/crisis" element={<Crisis />} />
           <Route path="/opposition" element={<Opposition />} />
           <Route path="/repercussions" element={<Repercussions />} />
           <Route path="/solutions" element={<Solutions />} />
-          <Route path="/mla-resources" element={<Resources />} />
+          <Route path="/resources" element={<Resources />} />
           <Route path="*" element={<Introduction />} />
         </Routes>
 
         <footer className="border-t bg-white mt-16">
-          <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="max-w-7xl mx-auto px-4 py-12">
             <div className="grid md:grid-cols-3 gap-8">
               <div>
-                <div className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-                  Healthcare Justice Project
-                </div>
+                <div className="text-xl font-bold text-blue-800 mb-4">Healthcare Justice Project</div>
                 <p className="text-sm text-gray-600">
                   Research and advocacy initiative documenting America's healthcare crisis. 
                   Based on "The Death of Care" by AJ James.
@@ -731,9 +931,6 @@ export default function App() {
             <div className="border-t mt-8 pt-8 text-center">
               <p className="text-sm text-gray-500">
                 © 2025 Healthcare Justice Project. Educational use only. All data properly cited.
-              </p>
-              <p className="text-xs text-gray-400 mt-2">
-                Built with React • Tailwind CSS • Data Visualization
               </p>
             </div>
           </div>
